@@ -1,7 +1,6 @@
 * SaruMane Script
-2012-05-04
-Yutaka Kachi
-
+Copyright 2012 Yutaka Kachi
+MIT License
 
 kmyaccによる簡易スクリプト言語。
 
@@ -24,7 +23,7 @@ kmyaccによる簡易スクリプト言語。
 *links
 
 http://www.catch.jp/wiki/
-http://www.catch.jp/wiki/?%A5%D7%A5%ED%A5%B0%A5%E9%A5%DF%A5%F3%A5%B0%B8%C0%B8%EC%A4%CF%BA%EE%A4%EC%A4%F3%A4%CE%A4%AB%A1%AA
+http://www.catch.jp/wiki/index.php?making_script02
 
 
 *kmyaccについて
@@ -43,3 +42,11 @@ http://www.catch.jp/wiki/program/yacc/kmyacc-4.1.4.tar.gz
 http://aoikujira.com/demo/hakkaku/rc/S7hRMjV3R7qZZsXTUkfnmw_kmyacc-as.zip
 
 
+* processing-1.3.6.js
+MIT License
+http://processingjs.org
+
+
+* processing.js for Browser
+Copyright 2011 Ubiquitous Entertainment Inc.
+http://www.uei.co.jp/

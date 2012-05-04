@@ -1,21 +1,69 @@
-﻿
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
 <meta charset="UTF-8">
 <title>SaruMane Script</title>
-<script type="text/javascript" src="sarumane_script.js"></script> 
+  <script type="text/javascript" src="./processing-1.3.6.js"></script> 
+  <script type="text/javascript" src="sarumane_script.js"></script>
+  <script type="text/javascript">
+  //run for processing.js
+    var Pjs;
+ 
+  function stop(){ // not work
+    if (Pjs)
+      Pjs.exit();
+  }
+  function run(){
+    //console.log("Run");
+    stop();
+    var canvas = document.getElementById('canvas0');
+    var code = document.getElementsByName('code')[0].value
+    //console.log(code);
+    try{
+      Pjs = new Processing(canvas, code);
+      //console.log(Pjs);
+    }catch(e){
+      alert(e);
+    }
+  }
+  </script>   
 </head>
 <body>
-<p>Enter your script for Monkey job!:</p>
-<form name="compiledtext" id="compiledtext" onsubmit="return main()">
-<textarea name="one" id="one" rows="4" cols="40"></textarea>
-<input name="answer" type="button" value="Run" onclick="main()">
-<input name="clear" type="reset" value="Clear" onclick="clearAnswer()">
-</form>
-<hr>
-<div id="output">
-</div>
-<hr>
+  <p>Enter your Processing.js Script:</p>
+  <table width="960px" heiht="320px" bgcolor="#eeeeee"><tbody><tr> 
+	<td width="320px" height="320px" bgcolor="white"> 
+		<canvas id="canvas0" width="320px" height="320px"></canvas> 
+  </td>			
+  <td> 
+      <div align="right">
+      <textarea id="editor" rows="25" cols="80" name="code"> 
+line(0, 0, 100, 100);
+			</textarea><br> 
+      <input type="button" onclick="run()" value="RUN"> 
+      <input type="button" onclick="stop()" value="STOP"> 
+    </div> 
+  </td></tr>
+  </tbody></table>
+
+  <p>Enter your script for Monkey job!:</p>
+  <form name="compiledtext" id="compiledtext" onsubmit="return main()">
+	  <textarea name="one" id="one" rows="4" cols="40">
+		void setup() {
+			size(250, 250)
+			frameRate(20)
+		}
+		void draw() {
+			background(0)
+			ellipse(width/2, height/2, mouseX, mouseY)
+		}
+	  </textarea>
+	  <input name="answer" type="button" value="Run" onclick="main()">
+	  <input name="clear" type="reset" value="Clear" onclick="clearAnswer()">
+  </form>
+  <hr>
+  <div id="output">
+  </div>
+  <hr>
 </body>
 </html>
