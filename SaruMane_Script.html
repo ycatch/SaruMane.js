@@ -48,7 +48,7 @@ line(0, 0, 100, 100);
 
   <p>Enter your script for Monkey job!:</p>
   <form name="compiledtext" id="compiledtext" onsubmit="return main()">
-	  <textarea name="one" id="one" rows="4" cols="40">
+	  <textarea name="one" id="one" rows="10" cols="80">
 		void setup() {
 			size(250, 250)
 			frameRate(20)
@@ -57,7 +57,7 @@ line(0, 0, 100, 100);
 			background(0)
 			ellipse(width/2, height/2, mouseX, mouseY)
 		}
-	  </textarea>
+	  </textarea><br>
 	  <input name="answer" type="button" value="Run" onclick="main()">
 	  <input name="clear" type="reset" value="Clear" onclick="clearAnswer()">
   </form>
