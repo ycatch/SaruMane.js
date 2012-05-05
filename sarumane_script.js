@@ -451,6 +451,7 @@ function writeDivHTML(div,html) {
 }
 
 function setAnswer(ans) {
+  ans= ans.replace(/\n/g,"<br>");
   writeDivHTML(getDivFromName("output"), ans);
 }
 
