@@ -9,25 +9,31 @@
 </head>
 <body>
   <p>Enter script for your monkey job!:</p>
+  <table width="960px" heiht="320px" bgcolor="#eeeeee"><tbody><tr> 
+  <td width="320px" height="320px" bgcolor="white"> 
+		<canvas id="canvas0" width="320px" height="320px"></canvas> 
+  </td>	
+  <td>
   <form name="compiledtext" id="compiledtext" onsubmit="return main()">
 	  <textarea name="one" id="one" rows="10" cols="80">
-		void setup() {
-			size(250, 250)
-			frameRate(20)
-		}
-		void draw() {
-			background(0)
-			ellipse(width/2, height/2, mouseX, mouseY)
-		}
+void setup() {
+	size(250, 250)
+	frameRate(20)
+}
+void draw() {
+	background(0)
+	ellipse(width/2, height/2, mouseX, mouseY)
+}
 	  </textarea><br>
 	  <input name="sarumane_run" type="button" value="Run" onclick="runScript()">
 	  <input name="sarumane_stop" type="button" value="Stop" onclick="stopScript()">
 	  <input name="clear" type="reset" value="Clear" onclick="clearAnswer()">
   </form>
+  </td>
+  </tr></tbody></table>  
   <hr>
   <div id="output">
   </div>
   <hr>
-  <canvas id="canvas0" width="320px" height="320px"></canvas> 
 </body>
 </html>
