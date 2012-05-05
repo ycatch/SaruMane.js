@@ -16,7 +16,7 @@ program : stmt_list { return $1; }
         ;
 
 stmt_list : { $$ = '';}
-		| stmt_list stmt { $$ = $1 + $2+ '<br>';}
+		| stmt_list stmt { $$ = $1 + $2+ '\n';}
 		;
 
 stmt : assign { $$ = $1 + ';' }
