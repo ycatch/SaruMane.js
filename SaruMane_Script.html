@@ -27,6 +27,20 @@
       alert(e);
     }
   }
+  function run2() {
+  	clearAnswer();
+	buffer = document.compiledtext.one.value;
+	var script = yyparse();
+	setAnswer(script);
+	  
+	var canvas = document.getElementById('canvas0');
+    try{
+      Pjs = new Processing(canvas, script);
+    }catch(e){
+      alert(e);
+    }
+	return false;
+  }
   </script>   
 </head>
 <body>
@@ -58,7 +72,8 @@ line(0, 0, 100, 100);
 			ellipse(width/2, height/2, mouseX, mouseY)
 		}
 	  </textarea><br>
-	  <input name="answer" type="button" value="Run" onclick="main()">
+	  <input name="answer" type="button" value="Trans" onclick="main()">
+	  <input name="sarumane_run" type="button" value="Run" onclick="run2()">
 	  <input name="clear" type="reset" value="Clear" onclick="clearAnswer()">
   </form>
   <hr>
