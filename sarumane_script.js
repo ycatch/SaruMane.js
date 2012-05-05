@@ -246,7 +246,7 @@ function yyparse()
         case 2:
 { yyval = '';} break;
         case 3:
-{ yyval = yyastk[yysp-(2-1)] + yyastk[yysp-(2-2)]+ '<br>';} break;
+{ yyval = yyastk[yysp-(2-1)] + yyastk[yysp-(2-2)]+ '\n';} break;
         case 4:
 { yyval = yyastk[yysp-(1-1)] + ';' } break;
         case 5:
