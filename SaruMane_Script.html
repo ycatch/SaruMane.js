@@ -6,61 +6,9 @@
 <title>SaruMane Script</title>
   <script type="text/javascript" src="./processing-1.3.6.js"></script> 
   <script type="text/javascript" src="sarumane_script.js"></script>
-  <script type="text/javascript">
-  //run for processing.js
-    var Pjs;
- 
-  function stop(){ // not work
-    if (Pjs)
-      Pjs.exit();
-  }
-  function run(){
-    //console.log("Run");
-    stop();
-    var canvas = document.getElementById('canvas0');
-    var code = document.getElementsByName('code')[0].value
-    //console.log(code);
-    try{
-      Pjs = new Processing(canvas, code);
-      //console.log(Pjs);
-    }catch(e){
-      alert(e);
-    }
-  }
-  function run2() {
-  	clearAnswer();
-	buffer = document.compiledtext.one.value;
-	var script = yyparse();
-	setAnswer(script);
-	  
-	var canvas = document.getElementById('canvas0');
-    try{
-      Pjs = new Processing(canvas, script);
-    }catch(e){
-      alert(e);
-    }
-	return false;
-  }
-  </script>   
 </head>
 <body>
-  <p>Enter your Processing.js Script:</p>
-  <table width="960px" heiht="320px" bgcolor="#eeeeee"><tbody><tr> 
-	<td width="320px" height="320px" bgcolor="white"> 
-		<canvas id="canvas0" width="320px" height="320px"></canvas> 
-  </td>			
-  <td> 
-      <div align="right">
-      <textarea id="editor" rows="25" cols="80" name="code"> 
-line(0, 0, 100, 100);
-			</textarea><br> 
-      <input type="button" onclick="run()" value="RUN"> 
-      <input type="button" onclick="stop()" value="STOP"> 
-    </div> 
-  </td></tr>
-  </tbody></table>
-
-  <p>Enter your script for Monkey job!:</p>
+  <p>Enter script for your monkey job!:</p>
   <form name="compiledtext" id="compiledtext" onsubmit="return main()">
 	  <textarea name="one" id="one" rows="10" cols="80">
 		void setup() {
@@ -72,13 +20,14 @@ line(0, 0, 100, 100);
 			ellipse(width/2, height/2, mouseX, mouseY)
 		}
 	  </textarea><br>
-	  <input name="answer" type="button" value="Trans" onclick="main()">
-	  <input name="sarumane_run" type="button" value="Run" onclick="run2()">
+	  <input name="sarumane_run" type="button" value="Run" onclick="runScript()">
+	  <input name="sarumane_stop" type="button" value="Stop" onclick="stopScript()">
 	  <input name="clear" type="reset" value="Clear" onclick="clearAnswer()">
   </form>
   <hr>
   <div id="output">
   </div>
   <hr>
+  <canvas id="canvas0" width="320px" height="320px"></canvas> 
 </body>
 </html>

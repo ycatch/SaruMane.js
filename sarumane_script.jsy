@@ -70,6 +70,8 @@ var token;
 var yylval;
 var toktype;
 
+var Pjs;
+
 function yylex() {
 	//cut for space and tabs
 	var res = buffer.match(/^\s+/);
@@ -182,10 +184,23 @@ function clearAnswer() {
   setAnswer(outputs);
 }
 
-function main() {
-  buffer = document.compiledtext.one.value;
-  clearAnswer();
-  var script = yyparse();
-  setAnswer(script);
-  return false;
+function stopScript(){ // not work
+    if (Pjs)
+      Pjs.exit();
+  }
+
+function runScript() {
+  	clearAnswer();
+	buffer = document.compiledtext.one.value;
+	var script = yyparse();
+	setAnswer(script);
+	
+	stopScript();
+	var canvas = document.getElementById('canvas0');
+    try{
+      Pjs = new Processing(canvas, script);
+    }catch(e){
+      alert(e);
+    }
+	return false;
 }
