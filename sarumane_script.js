@@ -242,7 +242,7 @@ function yyparse()
         /* Following line will be replaced by reduce actions */
         switch(yyn) {
         case 1:
-{ setAnswer(yyastk[yysp-(1-1)]); } break;
+{ return yyastk[yysp-(1-1)]; } break;
         case 2:
 { yyval = '';} break;
         case 3:
@@ -461,6 +461,7 @@ function clearAnswer() {
 function main() {
   buffer = document.compiledtext.one.value;
   clearAnswer();
-  yyparse();
+  var script = yyparse();
+  setAnswer(script);
   return false;
 }
