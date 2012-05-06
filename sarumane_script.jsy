@@ -65,72 +65,72 @@ primary : NUMBER
 
 /* Lexical analyzer */
 
-var buffer;
-var token;
+var yyyBuffer;
+var yyyToken;
 var yylval;
-var toktype;
+var yyyToktype;
 
 var Pjs;
 
 function yylex() {
 	//cut for space and tabs
-	var res = buffer.match(/^\s+/);
+	var res = yyyBuffer.match(/^\s+/);
 	if (res != null) {
-		buffer = buffer.substr(res[0].length);
+		yyyBuffer = yyyBuffer.substr(res[0].length);
 	}
 
 	//Empty
-	if (buffer.length == 0) {
+	if (yyyBuffer.length == 0) {
 		return 0;
 	}
 
 	//COMMENT
-	res = buffer.match(/^\/\//);
+	res = yyyBuffer.match(/^\/\//);
 	if (res != null) {
-		var index = buffer.indexOf("\n");
+		var index = yyyBuffer.indexOf("\n");
 
 		if (index == "-1") {
-			token = buffer;
+			yyyToken = yyyBuffer;
 		} else {
-			token = buffer.substr(0, index);
+			yyyToken = yyyBuffer.substr(0, index);
 		}
 
-		buffer = buffer.substr(token.length);
-		yylval = token + "";
+		yyyBuffer = yyyBuffer.substr(yyyToken.length);
+		yylval = yyyToken + "";
 		return COMMENT;
 	}
 
 	//IDENT
-	res = buffer.match(/^[a-zA-Z_]\w*/);
+	res = yyyBuffer.match(/^[a-zA-Z_]\w*/);
 	if (res != null) {
-		token = res[0];
-		buffer = buffer.substr(res[0].length);
-		yylval = token + "";
+		yyyToken = res[0];
+		yyyBuffer = yyyBuffer.substr(res[0].length);
+		yylval = yyyToken + "";
 		return IDENT;
 	}
 
 	//NUMBER
-	res = buffer.match(/^\d+(\.\d+)?/);
+	res = yyyBuffer.match(/^\d+(\.\d+)?/);
 	if (res != null) {
-		token = res[0];
-		buffer = buffer.substr(res[0].length);
-		yylval = token - 0; //return numeric-data
+		yyyToken = res[0];
+		yyyBuffer = yyyBuffer.substr(res[0].length);
+		yylval = yyyToken - 0; //return numeric-data
 		return NUMBER;
 	}
 
 	//Text String
-	res = buffer.match(/^".*"|'.*'/);
+	res = yyyBuffer.match(/^".*"|'.*'/);
 	if (res != null) {
-		token = res[0];
-		buffer = buffer.substr(res[0].length);
-		yylval = token + "";
+		yyyToken = res[0];
+		yyyBuffer = yyyBuffer.substr(res[0].length);
+		yylval = yyyToken + "";
 		return STRING;
 	}
 
 	//Single symbol
-	token = buffer.substr(0, 1);
-    buffer = buffer.substr(1);
-    return token.charCodeAt(0);
+	yyyToken = yyyBuffer.substr(0, 1);
+    yyyBuffer = yyyBuffer.substr(1);
+    return yyyToken.charCodeAt(0);
 }
 
 function yyerror(msg) {
@@ -192,7 +192,7 @@ function stopScript(){ // not work
 
 function runScript() {
   	clearAnswer();
-	buffer = document.compiledtext.one.value;
+	yyyBuffer = document.compiledtext.one.value;
 	var script = yyparse();
 	setAnswer(script);
 	
